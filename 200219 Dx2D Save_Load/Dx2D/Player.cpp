@@ -105,6 +105,18 @@ void Player::Update()
 		g_pFileManager->IniSave(L"PlayerInfo");
 
 		// 몬스터 저장
+		auto monsters = m_pMapObject->GetMonsters();
+		int monsterNum = monsters.size();
+		g_pFileManager->AddSaveInt(L"몬스터", L"MonsterNum", monsterNum);
+		for (int i = 0; i < monsterNum; ++i)
+		{
+			// 몬스터 위치와 상태 저장
+			g_pFileManager->AddSavefloat(L"몬스터" + to_wstring(i), L"PosX", monsters[i].vPos.x);
+			g_pFileManager->AddSavefloat(L"몬스터" + to_wstring(i), L"PosY", monsters[i].vPos.y);
+			g_pFileManager->AddSaveInt(L"몬스터" + to_wstring(i), L"State", (int)monsters[i].eState);
+			g_pFileManager->AddSavefloat(L"몬스터" + to_wstring(i), L"MoveCount", monsters[i].fMoveCount);
+		}
+		g_pFileManager->IniSave(L"MonsterInfo");
 
 		// 맵 저장
 		g_pFileManager->AddSavefloat(L"맵", L"MapPosX", m_pMap->GetMapPosX());
@@ -120,6 +132,20 @@ void Player::Update()
 		m_isOnGround = g_pFileManager->LoadIntegerData(L"PlayerInfo", L"플레이어", L"IsOnGround");
 
 		// 몬스터 불러오기
+		int monsterNum = g_pFileManager->LoadIntegerData(L"MonsterInfo", L"몬스터", L"MonsterNum");
+		if (m_pMapObject->GetMonsters().size() == monsterNum)
+		{
+			for (int i = 0; i < monsterNum; ++i)
+			{
+				// 몬스터 위치와 상태 불러오기
+				auto monster = m_pMapObject->GetMonsters()[i];
+				monster.vPos = { g_pFileManager->LoadfloatData(L"MonsterInfo", L"몬스터" + to_wstring(i), L"PosX"),
+				g_pFileManager->LoadfloatData(L"MonsterInfo", L"몬스터" + to_wstring(i), L"PosY") };
+				monster.eState = (MONSTATE)g_pFileManager->LoadIntegerData(L"MonsterInfo", L"몬스터" + to_wstring(i), L"State");
+				monster.fMoveCount = g_pFileManager->LoadfloatData(L"MonsterInfo", L"몬스터" + to_wstring(i), L"MoveCount");
+				m_pMapObject->SetMonster(i, monster);
+			}
+		}
 
 		// 맵 불러오기
 		m_pMap->SetMapPosX(g_pFileManager->LoadfloatData(L"MapInfo", L"맵", L"MapPosX"));

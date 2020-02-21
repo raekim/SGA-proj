@@ -155,3 +155,9 @@ void MapObject::Render()
 		m_vecMonster[i].pAnim->Render();
 	}
 }
+
+void MapObject::SetMonster(int idx, tagMonster m)
+{
+	if (idx < m_vecMonster.size()) m_vecMonster[idx] = m;
+	m_vecMonster[idx].pAnim->Play(m_vecMonster[idx].eState);
+}

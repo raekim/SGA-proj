@@ -50,5 +50,7 @@ public:
 	void SetPlayer(Player* p) { m_pPlayer = p; }
 
 	const vector<tagObject>& GetObjects() { return m_vecObject; }
+	const vector<tagMonster>& GetMonsters() { return m_vecMonster; }
+	void SetMonster(int idx, tagMonster m);
 };
 

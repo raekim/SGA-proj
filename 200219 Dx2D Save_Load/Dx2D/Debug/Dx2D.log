@@ -1,52 +1,31 @@
-﻿  FileManager.cpp
-c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\filemanager.cpp(49): warning C4018: '<': signed/unsigned mismatch
-c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\filemanager.cpp(114): warning C4018: '<': signed/unsigned mismatch
-c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\filemanager.cpp(118): warning C4018: '<': signed/unsigned mismatch
-c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\filemanager.cpp(122): warning C4172: returning address of local variable or temporary: szBuf
-  Circle.cpp
-c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\circle.cpp(37): warning C4305: '+=': truncation from 'double' to 'float'
-c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\circle.cpp(119): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\circle.cpp(126): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\circle.cpp(127): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\primitive2dobejct.h(95): warning C4018: '<': signed/unsigned mismatch
-  c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\primitive2dobejct.h(89): note: while compiling class template member function 'void Primitive2DObejct<PCVertex>::CreateBorderVertexBuffer(int)'
-  c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\circle.cpp(103): note: see reference to function template instantiation 'void Primitive2DObejct<PCVertex>::CreateBorderVertexBuffer(int)' being compiled
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xutility(3505): note: see reference to function template instantiation 'bool std::_Within_limits<_InIt,_Ty>(_InIt,const _Ty &)' being compiled
-          with
-          [
-              _InIt=const char *,
-              _Ty=char
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xutility(3533): note: see reference to function template instantiation '_InIt std::_Find_unchecked1<_InIt,_Ty>(_InIt,const _InIt,const _Ty &,std::true_type)' being compiled
-          with
-          [
-              _InIt=const char *,
-              _Ty=char
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xlocnum(93): note: see reference to function template instantiation '_InIt std::_Find_unchecked<const _Elem*,_Elem>(const _InIt,const _InIt,const _Ty &)' being compiled
-          with
-          [
-              _InIt=const char *,
-              _Elem=char,
-              _Ty=char
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xlocnum(978): note: see reference to function template instantiation 'size_t std::_Find_elem<_Elem,15>(const _Elem (&)[15],const _Elem)' being compiled
-          with
-          [
-              _Elem=char
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xlocnum(932): note: while compiling class template member function 'int std::num_get<char,std::istreambuf_iterator<char,std::char_traits<char>>>::_Getffld(char *,_InIt &,_InIt &,std::ios_base &,int *) const'
-          with
-          [
-              _InIt=std::istreambuf_iterator<char,std::char_traits<char>>
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xlocnum(729): note: see reference to function template instantiation 'int std::num_get<char,std::istreambuf_iterator<char,std::char_traits<char>>>::_Getffld(char *,_InIt &,_InIt &,std::ios_base &,int *) const' being compiled
-          with
-          [
-              _InIt=std::istreambuf_iterator<char,std::char_traits<char>>
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xlocnum(1850): note: see reference to class template instantiation 'std::num_get<char,std::istreambuf_iterator<char,std::char_traits<char>>>' being compiled
-  Primitive2DObejct.cpp
-  SoundManager.cpp
+﻿  Dx2D.cpp
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\dx2d.cpp(147): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\dx2d.cpp(148): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  MainGame.cpp
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\maingame.cpp(7): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  MapObject.cpp
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\mapobject.cpp(18): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\mapobject.cpp(65): warning C4018: '<': signed/unsigned mismatch
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\mapobject.cpp(69): warning C4018: '<': signed/unsigned mismatch
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\mapobject.cpp(76): warning C4018: '<': signed/unsigned mismatch
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\mapobject.cpp(88): warning C4018: '<': signed/unsigned mismatch
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\mapobject.cpp(93): warning C4244: '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\mapobject.cpp(94): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\mapobject.cpp(95): warning C4244: '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\mapobject.cpp(96): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\mapobject.cpp(130): warning C4244: '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\mapobject.cpp(131): warning C4244: '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\mapobject.cpp(132): warning C4244: '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\mapobject.cpp(133): warning C4244: '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\mapobject.cpp(148): warning C4018: '<': signed/unsigned mismatch
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\mapobject.cpp(153): warning C4018: '<': signed/unsigned mismatch
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\mapobject.cpp(161): warning C4018: '<': signed/unsigned mismatch
+  Player.cpp
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\player.cpp(214): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\player.cpp(251): warning C4244: '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\player.cpp(252): warning C4244: '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\player.cpp(253): warning C4244: '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\player.cpp(254): warning C4244: '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+c:\users\pl_7c_007\desktop\proj-studying\proj-studying\200219 dx2d save_load\dx2d\player.cpp(258): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
   Dx2D.vcxproj -> C:\Users\PL_7C_007\Desktop\proj-studying\proj-studying\200219 Dx2D Save_Load\Debug\Dx2D.exe
