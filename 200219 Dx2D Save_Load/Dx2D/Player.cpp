@@ -95,6 +95,37 @@ void Player::Init()
 
 void Player::Update()
 {
+	if (g_pKeyManager->isOnceKeyDown(VK_F5)) // 파일 저장
+	{
+		// 플레이어 저장
+		g_pFileManager->AddSavefloat(L"플레이어", L"PosX", GetPosition().x);
+		g_pFileManager->AddSavefloat(L"플레이어", L"PosY", GetPosition().y);
+		g_pFileManager->AddSavefloat(L"플레이어", L"MoveY", m_fMoveY);
+		g_pFileManager->AddSaveInt(L"플레이어", L"IsOnGround", (int)m_isOnGround);
+		g_pFileManager->IniSave(L"PlayerInfo");
+
+		// 몬스터 저장
+
+		// 맵 저장
+		g_pFileManager->AddSavefloat(L"맵", L"MapPosX", m_pMap->GetMapPosX());
+		g_pFileManager->IniSave(L"MapInfo");
+
+	}
+	else if (g_pKeyManager->isOnceKeyDown(VK_F6)) // 파일 불러오기
+	{
+		// 플레이어 불러오기
+		m_vPosition = { g_pFileManager->LoadfloatData(L"PlayerInfo", L"플레이어", L"PosX"),
+			g_pFileManager->LoadfloatData(L"PlayerInfo", L"플레이어", L"PosY") };
+		m_fMoveY = g_pFileManager->LoadfloatData(L"PlayerInfo", L"플레이어", L"MoveY");
+		m_isOnGround = g_pFileManager->LoadIntegerData(L"PlayerInfo", L"플레이어", L"IsOnGround");
+
+		// 몬스터 불러오기
+
+		// 맵 불러오기
+		m_pMap->SetMapPosX(g_pFileManager->LoadfloatData(L"MapInfo", L"맵", L"MapPosX"));
+		m_pMap->SetArryLayerPosX(g_pFileManager->LoadfloatData(L"MapInfo", L"맵", L"MapPosX"));
+	}
+
 	static int currState = 0;
 	static const char* szName[MAX];
 	
@@ -271,49 +302,6 @@ void Player::Update()
 
 	m_pRect->SetPosition(m_vPosition.x, m_vPosition.y + m_pAnimation->GetHeight() * 0.5f);
 	m_pRect->Update();
-
-	if (g_pKeyManager->isOnceKeyDown(VK_F5)) // 파일로 저장 샘플
-	{
-		//vector<string> data;
-		//char szBuf[1024];
-		//
-		//_itoa_s(m_vPosition.x, szBuf, 10);
-		//data.push_back(string(szBuf));
-		//
-		//_itoa_s(m_pMap->GetMapPosX(), szBuf, 10);
-		//data.push_back(string(szBuf));
-		//
-		//_itoa_s(m_vPosition.y, szBuf, 10);
-		//data.push_back(string(szBuf));
-		//
-		//_itoa_s(m_fMoveY, szBuf, 10);
-		//data.push_back(string(szBuf));
-		//
-		//g_pFileManager->TxtSave(L"PlayerPosition", data);
-
-		g_pFileManager->AddSaveString(L"유저 정보", L"아이디", "abcde");
-		g_pFileManager->AddSaveInt(L"플레이어", L"PosX", m_vPosition.x);
-		g_pFileManager->AddSavefloat(L"맵", L"PosX", m_pMap->GetMapPosX());
-		g_pFileManager->AddSavefloat(L"플레이어", L"PosY", m_vPosition.y);
-		g_pFileManager->AddSavefloat(L"맵", L"PosY", m_fMoveY);
-
-		g_pFileManager->IniSave(L"PlayerInfo");
-	}
-	else if (g_pKeyManager->isOnceKeyDown(VK_F6)) // 파일로 저장 샘플
-	{
-		//vector<string> data;
-		//
-		//data = g_pFileManager->TxtLoad(L"PlayerPosition");
-		//
-		//m_vPosition.x = atoi(data[0].c_str());
-		//m_pMap->SetMapPosX(atoi(data[1].c_str()));
-		//m_vPosition.y = atoi(data[2].c_str());
-		//m_fMoveY = atoi(data[3].c_str());
-
-		wstring wstr = g_pFileManager->LoadStringData(L"PlayerInfo", L"유저 정보", L"아이디");
-		int nData = g_pFileManager->LoadIntegerData(L"PlayerInfo", L"플레이어", L"PosX");
-		float fData = g_pFileManager->LoadfloatData(L"PlayerInfo", L"플레이어", L"PosY");
-	}
 }
 
 void Player::Render()

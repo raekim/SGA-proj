@@ -17,7 +17,7 @@ Map::Map()
 	m_arrLayer[2] = new Sprite(L"Back02");
 	m_arrLayer[2]->SetSize(2, 2);
 
-	//g_pSoundManager->AddSound("Back", "Angel Attack.mp3", true, true);
+	//g_pSoundManager->AddSound("Back", "AngelAttack.mp3", true, true);
 }
 
 

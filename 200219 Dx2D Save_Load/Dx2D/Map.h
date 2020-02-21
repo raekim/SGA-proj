@@ -27,5 +27,12 @@ public:
 	float GetMapPosX() { return m_fMapPosX; }
 	void SetMapPosX(float f) { m_fMapPosX = f; }
 	float GetMapPosY() { return m_fMapPosY; }
+
+	void SetArryLayerPosX(float posX)
+	{
+		m_arryLayerPosX[0] = -posX * 0.25f;
+		m_arryLayerPosX[1] = -posX * 0.5f;
+		m_arryLayerPosX[2] = -posX;
+	}
 };
 
