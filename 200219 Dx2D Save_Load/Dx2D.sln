@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dx2D", "Dx2D\Dx2D.vcxproj", "{D7BA1B7F-3D8F-4583-A861-C3339028589D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7BA1B7F-3D8F-4583-A861-C3339028589D}.Debug|x64.ActiveCfg = Debug|x64
+		{D7BA1B7F-3D8F-4583-A861-C3339028589D}.Debug|x64.Build.0 = Debug|x64
+		{D7BA1B7F-3D8F-4583-A861-C3339028589D}.Debug|x86.ActiveCfg = Debug|Win32
+		{D7BA1B7F-3D8F-4583-A861-C3339028589D}.Debug|x86.Build.0 = Debug|Win32
+		{D7BA1B7F-3D8F-4583-A861-C3339028589D}.Release|x64.ActiveCfg = Release|x64
+		{D7BA1B7F-3D8F-4583-A861-C3339028589D}.Release|x64.Build.0 = Release|x64
+		{D7BA1B7F-3D8F-4583-A861-C3339028589D}.Release|x86.ActiveCfg = Release|Win32
+		{D7BA1B7F-3D8F-4583-A861-C3339028589D}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39DB9D9F-9160-44A5-9BC0-F574D8027F24}
+	EndGlobalSection
+EndGlobal
