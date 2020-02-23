@@ -21,6 +21,7 @@ private:
 	MapObject*		m_pMapObject;
 
 	Rect*			m_pRect;
+	ProgressBar*	m_pProgressBar;
 
 public:
 	MainGame();

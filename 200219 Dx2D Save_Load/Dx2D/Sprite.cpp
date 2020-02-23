@@ -162,3 +162,8 @@ void Sprite::SetLBPosition(float x, float y)
 {
 	this->SetPosition(x + GetWidth() * 0.5f, y + GetHeight() * 0.5f);
 }
+
+void Sprite::SetLBPosition(D3DXVECTOR2 v)
+{
+	this->SetLBPosition(v.x, v.y);
+}

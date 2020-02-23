@@ -181,3 +181,19 @@ inline float GetAngle(D3DXVECTOR2 p1, D3DXVECTOR2 p2) // p1 -> p2
 	// cos, sin 함수들이 사용하는 값은 Radian 값이다.
 	return D3DXToDegree(result);
 }
+
+template <typename T>
+inline T LinearInterpolation(T from, T to, float cp) // cp = 0 ~ 1
+{
+	// return from * (1.0 - cp) + to * cp;
+	return from + (to - from) * cp;
+}
+
+template <typename T>
+inline T BezierCurve(T from, T via, T to, float cp) // Quadratic Bezier
+{
+	T t1 = LinearInterpolation(from, via, cp);
+	T t2 = LinearInterpolation(via, to, cp);
+
+	return LinearInterpolation(t1, t2, cp);
+}

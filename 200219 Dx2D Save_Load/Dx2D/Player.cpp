@@ -56,12 +56,19 @@ Player::Player()
 	m_pAnimation->AddClip(DIE, clip);
 
 	m_pRect = new Rect;
+	m_pBullet = new PlayerBullet;
+
+	g_pTextureManager->AddTexture(L"ProgressBack", L"progressBarBack.png");
+	g_pTextureManager->AddTexture(L"ProgressFront", L"progressBarFront.png");
+
+	m_pBar = new ProgressBar(L"ProgressBack", L"ProgressFront");
 }
 
 Player::~Player()
 {
-	delete m_pAnimation;
-	delete m_pRect;
+	SAFE_DELETE(m_pAnimation);
+	SAFE_DELETE(m_pRect);
+	SAFE_DELETE(m_pBullet);
 }
 
 void Player::Init()
@@ -83,14 +90,22 @@ void Player::Init()
 	m_isJumping = false;
 	m_fJumpPower = 450.0f;
 
-	m_fLeftEnd = 200;
-	m_fRightEnd = WINSIZEX * 0.5f - 100;
+	m_fLeftEnd = WINSIZEX * 0.45f;
+	m_fRightEnd = WINSIZEX * 0.55f;
 
 	m_isLeft = false;
 
 	m_nNumJump = 0;
 
-	m_fMoveY = 0.0f;
+	m_fMoveY = 150.0f;
+
+	SAFE_INIT(m_pBullet);
+
+	if (m_pBar)
+	{
+		m_pBar->SetSize(m_pAnimation->GetWidth() * 0.5f, 30);
+		m_pBar->Init();
+	}
 }
 
 void Player::Update()
@@ -110,6 +125,18 @@ void Player::Update()
 	ImGui::ListBox("Animation", &currState, szName, MAX);
 
 	ImGui::InputFloat("PlayerSpeed", &m_fSpeed);
+
+	// 캐릭터 바라보는 방향
+	if (m_vPosition.x > g_ptMouse.x)
+	{
+		m_isLeft = true;
+		m_vRotaion.y = D3DX_PI;
+	}
+	else
+	{
+		m_isLeft = false;
+		m_vRotaion.y = 0.0f;
+	}
 
 	float speedRate = 1.0f;
 
@@ -133,8 +160,8 @@ void Player::Update()
 				m_eMoveDirX = X_DIR::RightRun;
 		}
 
-		m_vRotaion.y = 0.0f;
-		m_isLeft = false;
+		//m_vRotaion.y = 0.0f;
+		//m_isLeft = false;
 		currState = 1;
 	}
 	else if (g_pKeyManager->isStayKeyDown('A'))
@@ -154,29 +181,14 @@ void Player::Update()
 				m_eMoveDirX = X_DIR::LeftRun;
 		}
 
-		m_vRotaion.y = D3DX_PI;
-		m_isLeft = true;
+		//m_vRotaion.y = D3DX_PI;
+		//m_isLeft = true;
 		currState = 1;
 	}
 	else
 	{
 		m_eMoveDirX = X_DIR::Walk;
 		currState = 0;
-	}
-
-	if (m_isJumping && g_pKeyManager->isStayKeyDown('W'))
-	{
-		if (m_fMoveY < WINSIZEY && m_vPosition.y >= m_pMap->GetGroundY())
-			m_fMoveY += 5.0f;
-		else
-			m_vPosition.y += 5.0f;
-	}
-	else if (m_isJumping && g_pKeyManager->isStayKeyDown('S'))
-	{
-		if (m_fMoveY > 0 && m_vPosition.y <= m_pMap->GetGroundY())
-			m_fMoveY -= 5.0f;
-		else
-			m_vPosition.y -= 5.0f;			
 	}
 
 	if (g_pKeyManager->isOnceKeyDown(VK_SPACE) && m_isJumping == false)
@@ -237,7 +249,7 @@ void Player::Update()
 		}
 		else // 아래로 떨어질 때
 		{
-			if (m_fMoveY > 0 && m_vPosition.y <= m_pMap->GetGroundY())
+			if (m_fMoveY > 150 && m_vPosition.y <= m_pMap->GetGroundY())
 				m_fMoveY += speed;
 			else
 				m_vPosition.y += speed;
@@ -245,7 +257,7 @@ void Player::Update()
 			currState = 3;
 		}
 
-		if (m_vPosition.y <= m_pMap->GetGroundY() - m_fMoveY)
+		if (m_vPosition.y <= m_pMap->GetGroundY() + 150 - m_fMoveY)
 		{
 			m_vPosition.y = m_pMap->GetGroundY();
 			m_isJumping = false;
@@ -314,12 +326,36 @@ void Player::Update()
 		int nData = g_pFileManager->LoadIntegerData(L"PlayerInfo", L"플레이어", L"PosX");
 		float fData = g_pFileManager->LoadfloatData(L"PlayerInfo", L"플레이어", L"PosY");
 	}
+
+	if (m_pBullet && g_pKeyManager->isStayKeyDown(VK_LBUTTON))
+		m_pBullet->ShootBullet(m_vPosition, 500.0f, BTYPE::SPEED);
+	if (m_pBullet && g_pKeyManager->isStayKeyDown(VK_RBUTTON))
+		m_pBullet->ShootBullet(m_vPosition, 1.0f, BTYPE::INTERPOLATION);
+	if (m_pBullet && g_pKeyManager->isStayKeyDown(VK_MBUTTON))
+		m_pBullet->ShootBullet(m_vPosition, 1.0f, BTYPE::BEZIER);
+
+	SAFE_UPDATE(m_pBullet);
+	
+	static float currHp = 100;
+	ImGui::SliderFloat("HP", &currHp, 0, 100);
+
+	if (m_pBar)
+	{
+		m_pBar->SetProgress(100, currHp, false);
+
+		m_pBar->SetPos(m_vPosition.x - m_pAnimation->GetWidth() * 0.25f,
+			m_vPosition.y + m_pAnimation->GetHeight());
+		m_pBar->Update();
+	}
 }
 
 void Player::Render()
 {
-	m_pAnimation->Render();
-	m_pRect->Render();
+	SAFE_RENDER(m_pAnimation);
+	SAFE_RENDER(m_pRect);
+	SAFE_RENDER(m_pBar);
 
 	g_pTextManager->IntRender(m_nNumJump, 10, WINSIZEY - 120, 50, NumberType::Blue);
+
+	SAFE_RENDER(m_pBullet);
 }

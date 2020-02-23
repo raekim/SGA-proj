@@ -1,4 +1,5 @@
 #pragma once
+#include "PlayerBullet.h"
 
 class Map;
 class MapObject;
@@ -45,6 +46,9 @@ private:
 	int					m_nNumJump;
 
 	float				m_fMoveY;
+
+	PlayerBullet*		m_pBullet;
+	ProgressBar*		m_pBar;
 
 public:
 	Player();

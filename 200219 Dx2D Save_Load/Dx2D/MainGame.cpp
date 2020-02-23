@@ -86,6 +86,7 @@ void MainGame::CreateGameClasses()
 	m_pMapObject->SetPlayer(m_pPlayer);
 
 	m_pRect = new Rect;
+	m_pProgressBar = new ProgressBar(L"ProgressBack", L"ProgressFront");
 }
 
 void MainGame::DeleteGameClasses()
@@ -102,6 +103,13 @@ void MainGame::Init()
 	SAFE_INIT(m_pPlayer);
 
 	SAFE_INIT(m_pRect);
+
+	if (m_pProgressBar)
+	{
+		m_pProgressBar->SetSize(WINSIZEX - 200, 50);
+		m_pProgressBar->Init();
+		m_pProgressBar->SetPos(100, WINSIZEY - 60);
+	}
 }
 
 void MainGame::Update()
@@ -127,6 +135,12 @@ void MainGame::Update()
 		m_pRect->SetColor(D3DXCOLOR(1, 0, 0, 1));
 	else
 		m_pRect->SetColor(D3DXCOLOR(0, 1, 0, 1));
+
+	if (m_pProgressBar)
+	{
+		m_pProgressBar->SetProgress(100, 50, true);
+		m_pProgressBar->Update();
+	}
 }
 
 void MainGame::Render()
@@ -142,6 +156,7 @@ void MainGame::Render()
 	SAFE_RENDER(m_pPlayer);
 
 	SAFE_RENDER(m_pRect);
+	SAFE_RENDER(m_pProgressBar);
 
 	g_pTextManager->AlphabetRender("ABCDEFG", 10, WINSIZEY - 60, 50);
 

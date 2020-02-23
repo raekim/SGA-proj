@@ -129,6 +129,12 @@
     <ClInclude Include="FileManager.h">
       <Filter>Dx2D Framework\2. Manager\File</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerBullet.h">
+      <Filter>Dx2D Framework\4. GameClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgressBar.h">
+      <Filter>Dx2D Framework\4. GameClasses</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainGame.cpp">
@@ -190,6 +196,12 @@
     </ClCompile>
     <ClCompile Include="FileManager.cpp">
       <Filter>Dx2D Framework\2. Manager\File</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerBullet.cpp">
+      <Filter>Dx2D Framework\4. GameClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgressBar.cpp">
+      <Filter>Dx2D Framework\4. GameClasses</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

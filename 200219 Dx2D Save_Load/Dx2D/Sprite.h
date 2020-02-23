@@ -29,5 +29,6 @@ public:
 	float GetHeight() { return m_fHeight * m_vSize.y; }
 
 	virtual void SetLBPosition(float x, float y) override;
+	void SetLBPosition(D3DXVECTOR2 v);
 };
 

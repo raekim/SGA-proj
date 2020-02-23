@@ -168,9 +168,11 @@
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="MapObject.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerBullet.h" />
     <ClInclude Include="Primitive2DObejct.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Shader.h" />
@@ -200,9 +202,11 @@
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MapObject.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerBullet.cpp" />
     <ClCompile Include="Primitive2DObejct.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="SoundManager.cpp">
